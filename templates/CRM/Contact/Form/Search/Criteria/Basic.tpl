@@ -111,7 +111,7 @@
     {/if}
     {if $form.tag_search}
       <td>{$form.tag_search.label}  {help id="id-all-tags"}<br/>
-        {$form .tag_search.html}
+        {$form.tag_search.html}
       </td>
     {/if}
     {if ! $isTagset}
