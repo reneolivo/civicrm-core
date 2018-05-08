@@ -69,7 +69,7 @@ class CRM_Contact_Form_Search_Criteria {
       $contactTags = CRM_Core_BAO_Tag::getTags();
 
       if ($contactTags) {
-        $form->add('select', 'contact_tags', ts('Tags'), $contactTags, FALSE,
+        $form->add('select', 'contact_tags', ts('Select Tag(s)'), $contactTags, FALSE,
           array('id' => 'contact_tags', 'multiple' => 'multiple', 'class' => 'crm-select2', 'style' => 'width: 100%;')
         );
       }
@@ -99,10 +99,10 @@ class CRM_Contact_Form_Search_Criteria {
     }
 
     // add text box for last name, first name, street name, city
-    $form->addElement('text', 'sort_name', ts('Find...'), CRM_Core_DAO::getAttribute('CRM_Contact_DAO_Contact', 'sort_name'));
+    $form->addElement('text', 'sort_name', ts('Complete OR Partial Name'), CRM_Core_DAO::getAttribute('CRM_Contact_DAO_Contact', 'sort_name'));
 
     // add text box for last name, first name, street name, city
-    $form->add('text', 'email', ts('Contact Email'), CRM_Core_DAO::getAttribute('CRM_Contact_DAO_Contact', 'sort_name'));
+    $form->add('text', 'email', ts('Complete OR Partial Email'), CRM_Core_DAO::getAttribute('CRM_Contact_DAO_Contact', 'sort_name'));
 
     //added contact source
     $form->add('text', 'contact_source', ts('Contact Source'), CRM_Core_DAO::getAttribute('CRM_Contact_DAO_Contact', 'contact_source'));
