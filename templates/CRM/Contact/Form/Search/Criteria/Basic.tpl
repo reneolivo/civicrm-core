@@ -24,15 +24,16 @@
  +--------------------------------------------------------------------+
 *}
 <div class="advanced-search-fields basic-fields form-layout">
-  {foreach from=$basicSearchFields item=basicSearchField}
+  {foreach from=$basicSearchFields key=basicSearchField item=fieldSpec}
     {assign var=field value=$form[$basicSearchField]}
     {if $field}
       {capture assign=fieldTemplatePath}CRM/Contact/Form/Search/Criteria/Fields/{$basicSearchField}.tpl{/capture}
       {if $fieldTemplatePath|template_exists}
         {include file=$fieldTemplatePath}
       {else}
-        <div class="search-field">
-          {$field.label}<br />
+        <div class="search-field {$fieldSpec.class|escape}">
+          {$field.label}
+          {if $fieldSpec.help}{assign var=help value=$fieldSpec.help}{capture assign=helpFile}{if $fieldSpec.help}{$fieldSpec.help}{else}''{/if}{/capture}{help id=$help.id file=$help.file}{/if}<br />
           {$field.html}
         </div>
       {/if}

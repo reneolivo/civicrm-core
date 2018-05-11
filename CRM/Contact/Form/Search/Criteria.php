@@ -35,32 +35,27 @@ class CRM_Contact_Form_Search_Criteria {
    * @param CRM_Core_Form $form
    */
   public static function basic(&$form) {
-    // Allows the template to determine if another template exists:
-    $smarty = CRM_Core_Smarty::singleton();
-    $smarty->register_modifier('template_exists', array(&$smarty, 'template_exists'));
 
     // Defines the fields that can be displayed for the basic search section:
     $form->assign('basicSearchFields', [
-      'sort_name',
-      'email',
-      'contact_type',
-      'group',
-      'contact_tags',
-      'tag_search',
-      'all_tag_types',
-      'phone_numeric',
-      'phone_location_type_id',
-      'phone_phone_type_id',
-      'privacy_toggle',
-      'preferred_communication_method',
-      'contact_source',
-      'job_title',
-      'preferred_language',
-      'contact_id',
-      'external_identifier',
-      'uf_user',
+      'sort_name' => [],
+      'email' => [],
+      'contact_type' => [],
+      'group' => [],
+      'contact_tags' => [],
+      'tag_search' => ['help' => ['id' => 'id-all-tags'],
+      'all_tag_types' => ['help' => ['id' => 'id-all-tags']], 'class' => 'search-field__span-3'],
+      'phone_numeric' => [],
+      'phone_location_type_id' => [],
+      'privacy_toggle' => [],
+      'preferred_communication_method' => [],
+      'contact_source' => ['help' => ['id' => 'id-source', 'file' => 'CRM/Contact/Form/Contact']],
+      'job_title' => [],
+      'preferred_language' => [],
+      'contact_id' => ['help' => ['id' => 'id-contact-id', 'file' => 'CRM/Contact/Form/Contact']],
+      'external_identifier' => ['help' => ['id' => 'id-external-id', 'file' => 'CRM/Contact/Form/Contact']],
+      'uf_user' => [],
     ]);
-
     $form->addElement('hidden', 'hidden_basic', 1);
 
     if ($form->_searchOptions['contactType']) {
